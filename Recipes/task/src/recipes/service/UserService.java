@@ -2,7 +2,6 @@ package recipes.service;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import recipes.data.Recipe;
 import recipes.data.User;
 import recipes.repositories.UsersRepository;
 

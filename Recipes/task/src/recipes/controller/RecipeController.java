@@ -5,9 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -56,9 +54,9 @@ public class RecipeController {
     @PutMapping("/recipe/{id}")
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<String> updateRecipe(@Valid @RequestBody RecipeModel model,
-                             @Valid @PathVariable long id, @AuthenticationPrincipal UserDetails user) {
+                             @Valid @PathVariable long id) {
 
-        if(recipeService.updateRecipeById(id, model, user.getUsername())) {
+        if(recipeService.updateRecipeById(id, model, getLoggedInUser())) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

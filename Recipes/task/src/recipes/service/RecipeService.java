@@ -27,7 +27,6 @@ public class RecipeService {
                 LocalDateTime.now(),
                 recipe.getDescription(), recipe.getIngredients(),
                 recipe.getDirections());
-       // userService.addRecipeToUser(recipeCreated, email);
         recipeCreated.setEmail(email);
         return recipeRepository.save(recipeCreated);
     }
@@ -48,7 +47,6 @@ public class RecipeService {
                 throw new ResponseStatusException(HttpStatus.FORBIDDEN);
             }
             recipeRepository.deleteById(id);
-            //userService.deleteRecipeForUser(recipe, email);
             return true;
         }
         return false;

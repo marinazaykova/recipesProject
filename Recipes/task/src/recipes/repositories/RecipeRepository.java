@@ -8,7 +8,6 @@ import java.util.List;
 
 @Repository
 public interface RecipeRepository extends CrudRepository<Recipe, Long> {
-   // List<Recipe> findAllByCategoryOrderByDateDesc(String category);
     List<Recipe> findByCategoryIgnoreCaseOrderByDateDesc(String category);
     List<Recipe> findAllByNameContainingIgnoreCaseOrderByDateDesc(String name);
 
